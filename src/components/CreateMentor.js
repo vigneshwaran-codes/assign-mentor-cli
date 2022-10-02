@@ -9,13 +9,13 @@ function CreateMentor () {
   const [mentors, setMentors] = useContext(AssignMentorsContext)
 
   const addMentor = (e) => {
-   e.preventDefault();
+    e.preventDefault()
     const posted_mentor = axios.post('https://assign-mentors-portal.herokuapp.com/mentors',
-    {
-      name,
-      email,
-      course
-    })
+      {
+        name,
+        email,
+        course
+      })
     setMentors([...mentors, posted_mentor.data])
     setName('')
     setEmail('')
@@ -23,7 +23,7 @@ function CreateMentor () {
   }
   return (
     <>
-    <form onSubmit={addMentor}>
+      <form onSubmit={addMentor}>
         <h1>Created Mentor !</h1>
         <div className='col-md-6'>
           <label htmlFor='name' className='form-label'>Mentor Name</label>
@@ -35,8 +35,8 @@ function CreateMentor () {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          </div>
-          <div className='col-md-6'>
+        </div>
+        <div className='col-md-6'>
           <label htmlFor='email' className='form-label'>Email</label>
           <input
             type='email'
@@ -46,8 +46,8 @@ function CreateMentor () {
             placeholder='Enter email' required
             onChange={(e) => setEmail(e.target.value)}
           />
-          </div>
-          <div className='col-md-6'>
+        </div>
+        <div className='col-md-6'>
           <label htmlFor='course' className='form-label'>Course</label>
           <input
             type='text'

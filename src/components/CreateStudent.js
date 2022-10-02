@@ -30,7 +30,7 @@ function CreateStudent () {
   return (
     <>
       <form onSubmit={addStudent}>
-      <h1>Create Student !</h1>
+        <h1>Create Student !</h1>
         <div className='mb-3 col-md-6'>
           <label htmlFor='name' className='form-label'>
             Name
@@ -45,8 +45,8 @@ function CreateStudent () {
             }}
             required
           />
-          </div>
-          <div className='mb-3 col-md-6'>
+        </div>
+        <div className='mb-3 col-md-6'>
           <label htmlFor='batch' className='form-label'>
             Batch
           </label>
@@ -61,8 +61,8 @@ function CreateStudent () {
             }}
             required
           />
-          </div>
-          <div className='mb-3 col-md-6'>
+        </div>
+        <div className='mb-3 col-md-6'>
           <label htmlFor='course' className='form-label'>
             Mentor
           </label>
@@ -71,18 +71,18 @@ function CreateStudent () {
             value={assignMentor}
             onChange={(e) => setAssignMentor(e.target.value)}
           >
-            <option value=''></option>
+            <option value='' />
             {mentors.map((mentor) => {
               return <option key={uuidv4()} value={mentor._id}>{mentor.name}</option>
             })}
           </select>
-          </div>
-          <button
-          type='submit' 
+        </div>
+        <button
+          type='submit'
           className='btn btn-primary mb-3'
-          >
-            Create
-          </button>
+        >
+          Create
+        </button>
       </form>
     </>
   )

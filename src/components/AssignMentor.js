@@ -9,17 +9,17 @@ export default function AssignMentor () {
   console.log(setMentors)
   const [mentor, setMentor] = useState('')
   const [options, setOptions] = useState([])
-  
+
   useEffect(() => {
     let arrayval = []
     students.map(
-      (student) => 
+      (student) =>
         (arrayval = [...arrayval, { name: student.name, value: student._id }])
-  )
-      setOptions(arrayval)
+    )
+    setOptions(arrayval)
   }, [students])
 
-  let selectedOptions = [],removedOptions = []
+  let selectedOptions = []; let  removedOptions = []
 
   const onSelect = (data) => {
     selectedOptions = data
@@ -31,7 +31,7 @@ export default function AssignMentor () {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let selectedStudents = removedOptions.length
+    const selectedStudents = removedOptions.length
       ? removedOptions
       : selectedOptions
 
@@ -40,11 +40,11 @@ export default function AssignMentor () {
     })
 
     await axios.patch(
-      `https://assign-mentors-portal.herokuapp.com/students/assign-mentor-students`,
+      'https://assign-mentors-portal.herokuapp.com/students/assign-mentor-students',
       { mentor, stud_list }
     )
     const stud_data = await axios.get(
-      `https://assign-mentors-portal.herokuapp.com/students`
+      'https://assign-mentors-portal.herokuapp.com/students'
     )
     setStudents(stud_data.data)
   }
@@ -64,7 +64,7 @@ export default function AssignMentor () {
               setMentor(e.target.value)
             }}
           >
-            <option value=''></option>
+            <option value='' />
             {mentors.map((mentor) => {
               return <option key={uuidv4()} value={mentor._id}>{mentor.name}</option>
             })}

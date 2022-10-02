@@ -8,14 +8,13 @@ function GetStudents () {
   const [mentors, setMentors] = useContext(AssignMentorsContext)
   const [mentor, setMentor] = useState('')
   const [studList, setStudList] = useState([])
-
   console.log(setMentors)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const student_list = await axios.get(
       `https://assign-mentors-portal.herokuapp.com/students/mentor-students/${mentor}`
-      )
+    )
     console.log(student_list)
     setStudList(student_list.data)
     setMentor('')
@@ -27,15 +26,15 @@ function GetStudents () {
       <form onSubmit={handleSubmit}>
         <div className='mb-3 mt-3'>
           <label htmlFor='mentor' className='form-label'>Mentor</label>
-          <select 
-          className='form-label'
-          value={mentor}
-          onChange={(e) => setMentor(e.target.value)}>
-            <option value=''></option>
+          <select
+            className='form-label'
+            value={mentor}
+            onChange={(e) => setMentor(e.target.value)}
+          >
+            <option value='' />
             {mentors.map((mentor) => {
-                return <option key={uuidv4()} value={mentor._id}>{mentor.name}</option>
-              })
-              }
+              return <option key={uuidv4()} value={mentor._id}>{mentor.name}</option>
+            })}
           </select>
         </div>
         <br />
@@ -44,7 +43,8 @@ function GetStudents () {
         </button>
       </form>
       {
-        studList.length ? (
+        studList.length
+          ? (
             <>
               <table className='table table-stripped table-hover'>
                 <thead>
@@ -54,20 +54,22 @@ function GetStudents () {
                   </tr>
                 </thead>
                 <tbody>
-                  { studList.map((student) => {
-                return (
-                  <tr key={student._id}>
-                    <td>{student.name}</td>
-                    <td>{student.batch}</td>
-                  </tr>
-                )
-              })}
+                  {studList.map((student) => {
+                    return (
+                      <tr key={student._id}>
+                        <td>{student.name}</td>
+                        <td>{student.batch}</td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </>
-            ) : (
+            )
+          : (
               ''
-            )}
+            )
+}
     </div>
   )
 }

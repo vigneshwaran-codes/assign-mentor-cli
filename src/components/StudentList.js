@@ -19,15 +19,15 @@ function StudentList () {
           {students.map((student) => {
             const stud_mentor = mentors.filter(
               (mentor) => mentor._id === student.mentor
-                )
-                console.log(stud_mentor)
-                return (
-                        <tr key={student._id}>
-                          <td>{student.name}</td>
-                          <td>{student.batch}</td>
-                          <td>{stud_mentor[0] ? stud_mentor[0].name : ''}</td>
-                        </tr>
-                      )
+            )
+            console.log(stud_mentor)
+            return (
+              <tr key={student._id}>
+                <td>{student.name}</td>
+                <td>{student.batch}</td>
+                <td>{stud_mentor[0] ? stud_mentor[0].name : ''}</td>
+              </tr>
+            )
           })}
         </tbody>
       </table>
