@@ -8,9 +8,9 @@ function CreateMentor () {
   const [course, setCourse] = useState('')
   const [mentors, setMentors] = useContext(AssignMentorsContext)
 
-  const addMentor = (e) => {
+  const addMentor = async (e) => {
     e.preventDefault()
-    const posted_mentor = axios.post('https://assign-mentors-portal.herokuapp.com/mentors',
+    const posted_mentor = await axios.post('https://assign-mentors-portal.herokuapp.com/mentors',
       {
         name,
         email,

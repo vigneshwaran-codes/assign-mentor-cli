@@ -38,7 +38,7 @@ export default function ChangeMentor () {
           >
             <option value='' />
             {students.map((student) => {
-              return <option value={student._id}>{student.name}</option>
+              return <option key={uuidv4()} value={student._id}>{student.name}</option>
             })}
           </select>
         </div>
@@ -51,7 +51,7 @@ export default function ChangeMentor () {
             value={mentor}
             onChange={(e) => { setMentor(e.target.value) }}
           >
-            <option value=''> </ option>
+            <option value='' />
             {mentors.map((mentor) => {
               return <option key={uuidv4()} value={mentor._id}>{mentor.name}</option>
             })}
