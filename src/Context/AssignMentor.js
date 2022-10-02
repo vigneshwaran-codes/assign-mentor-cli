@@ -25,7 +25,7 @@ export const AssignMentorProvider = ({ children }) => {
       return () => {
         <></>
       }
-  }, [])
+  })
 
   return (
     <>
